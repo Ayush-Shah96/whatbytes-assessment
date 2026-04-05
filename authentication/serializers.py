@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 class RegisterSerializer(serializers.ModelSerializer):
     """Serializer for user registration."""
@@ -72,19 +73,45 @@ class UserSerializer(serializers.ModelSerializer):
         return obj.get_full_name() or obj.username
 
 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    """Custom JWT serializer that accepts email instead of username."""
-    
-    username_field = 'email'
+class CustomTokenObtainPairSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
-        # Map email to username for authentication
-        email = attrs.get('email', '')
+        email = attrs.get('email', '').lower()
+        password = attrs.get('password', '')
+
+        # Find user by email
         try:
-            user = User.objects.get(email=email.lower())
-            attrs[self.username_field] = user.username
+            user = User.objects.get(email=email)
         except User.DoesNotExist:
             raise serializers.ValidationError(
                 {"detail": "No account found with this email address."}
             )
-        return super().validate(attrs)
+
+        # Authenticate using their username + password
+        authenticated_user = authenticate(
+            request=self.context.get('request'),
+            username=user.username,
+            password=password
+        )
+
+        if not authenticated_user:
+            raise serializers.ValidationError(
+                {"detail": "Incorrect password."}
+            )
+
+        if not authenticated_user.is_active:
+            raise serializers.ValidationError(
+                {"detail": "This account is inactive."}
+            )
+
+        # Generate tokens manually
+        refresh = RefreshToken.for_user(authenticated_user)
+
+        self.user = authenticated_user
+
+        return {
+            "access": str(refresh.access_token),
+            "refresh": str(refresh),
+        }

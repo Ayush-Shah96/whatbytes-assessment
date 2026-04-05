@@ -50,7 +50,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"StrongPass123!\",\n  \"password_confirm\": \"StrongPass123!\"\n}"
+              "raw": "{\n  \"name\": \"Akansha Bharat\",\n  \"email\": \"akansha@example.com\",\n  \"password\": \"Password@123\",\n  \"password_confirm\": \"Password@123\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/auth/register/",
@@ -83,7 +83,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"StrongPass123!\"\n}"
+              "raw": "{\n  \"email\": \"akansha@example.com\",\n  \"password\": \"Password@123\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/auth/login/",
