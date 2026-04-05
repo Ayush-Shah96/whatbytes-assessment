@@ -139,7 +139,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Jane Smith\",\n  \"date_of_birth\": \"1990-05-15\",\n  \"gender\": \"F\",\n  \"email\": \"jane@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"123 Main St, Mumbai\",\n  \"blood_group\": \"O+\",\n  \"medical_history\": \"No known allergies.\"\n}"
+              "raw": "{\n  \"name\": \"Jay Shah\",\n  \"date_of_birth\": \"1990-05-15\",\n  \"gender\": \"M\",\n  \"email\": \"jay@example.com\",\n  \"phone\": \"9876543210\",\n  \"address\": \"123 Main St, Mumbai\",\n  \"blood_group\": \"O+\",\n  \"medical_history\": \"No known allergies.\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/patients/",
@@ -224,7 +224,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Alice Brown\",\n  \"specialization\": \"cardiology\",\n  \"license_number\": \"MH-DOC-2023-001\",\n  \"years_of_experience\": 12,\n  \"qualification\": \"MBBS, MD (Cardiology)\",\n  \"email\": \"alice.brown@hospital.com\",\n  \"phone\": \"9000012345\",\n  \"hospital_affiliation\": \"City Heart Hospital\",\n  \"available\": true\n}"
+              "raw": "{\n  \"name\": \"Ankita Hari\",\n  \"specialization\": \"cardiology\",\n  \"license_number\": \"MH-DOC-2023-001\",\n  \"years_of_experience\": 12,\n  \"qualification\": \"MBBS, MD (Cardiology)\",\n  \"email\": \"ankita@hospital.com\",\n  \"phone\": \"9000012345\",\n  \"hospital_affiliation\": \"City Heart Hospital\",\n  \"available\": true\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/doctors/",
@@ -305,7 +305,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"available\": false,\n  \"hospital_affiliation\": \"Metro General Hospital\",\n  \"years_of_experience\": 13\n}"
+              "raw": "{\n  \"available\": false,\n  \"hospital_affiliation\": \"City Hospital\",\n  \"years_of_experience\": 13\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/doctors/1/",
