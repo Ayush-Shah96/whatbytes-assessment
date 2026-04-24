@@ -1,5 +1,10 @@
+"""
+WSGI config for Healthcare Backend Project.
+"""
+
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'healthcare.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'healthcare.config.settings.development')
+
 application = get_wsgi_application()
